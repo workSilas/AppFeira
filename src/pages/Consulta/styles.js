@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     textRefresh: {
         color: '#fff',
         textAlign: 'center',
-        alignItems: center,
+        alignItems: 'center',
         fontWeight: "500",
         fontSize: refreshVW,
     },
