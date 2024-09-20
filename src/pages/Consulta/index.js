@@ -11,6 +11,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import styles from "./styles";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Toast from "react-native-toast-message"
 
 export default function Consulta() {
   const navegacao = useNavigation();
@@ -33,7 +34,10 @@ export default function Consulta() {
         { andar: andar, sala: sala, qrcode: qrCode },
         { headers: { "x-access-token": token } }
       );
-      alert("Visita registrada!");
+      Toast.show({
+        text1: "Visita registrada!",
+        type: "success"
+      });
     }
     marcarVisita();
   }, []);
