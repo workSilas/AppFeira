@@ -11,16 +11,12 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import styles from "./styles";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Toast from "react-native-toast-message"
+import Toast from "react-native-toast-message";
 
 export default function Consulta() {
   const navegacao = useNavigation();
   const { params } = useRoute(); // o "useRoute" me da a possibilidade de recuperar parametros enviados."
-
   const { sala, qrCode, andar } = params; // fazendo desestruturação para pegar apenas o parametro q enviei la na home. Percebe-se que o nome segue o mesmo.
-  console.log(qrCode); // no momento estou apenas mostrando no console, mas vc pode mostrar em qualquer lugar do teu codigo.
-  console.log(sala);
-
   const [consulta, setConsulta] = useState([]);
 
   const url = "https://www.feiradeprofissoes-insf.com.br/api/visita";
@@ -30,9 +26,7 @@ export default function Consulta() {
   useEffect(() => {
     async function marcarVisita() {
       try {
-
-        if (!qrCode)
-          return;
+        if (!qrCode) return;
 
         await axios.post(
           url,
@@ -41,14 +35,12 @@ export default function Consulta() {
         );
         Toast.show({
           text1: "Visita registrada!",
-          type: "success"
+          type: "success",
         });
-        
-      }
-      catch (err) {
+      } catch (err) {
         Toast.show({
           text1: err.response.data.erro,
-          type: "error"
+          type: "error",
         });
       }
     }
@@ -57,17 +49,14 @@ export default function Consulta() {
 
   async function listaConsulta() {
     try {
-      
       let resp = await axios.get(`${url}/${andar}/${sala}`, {
         headers: { "x-access-token": token },
       });
       setConsulta(resp.data);
-      
-    }
-    catch (err) {
+    } catch (err) {
       Toast.show({
         text1: err.response.data.erro,
-        type: "error"
+        type: "error",
       });
     }
   }
@@ -114,8 +103,12 @@ export default function Consulta() {
                 return (
                   <View style={styles.listView} key={item}>
                     <Text style={styles.itemList}>{andar}</Text>
-                    <Text style={styles.itemList}>{sala.length > 9 ? sala.substr(0, 9)+'.' : sala}</Text>
-                    <Text style={styles.itemList}>{new Date(item.DT_VISITA).toLocaleTimeString()}</Text>
+                    <Text style={styles.itemList}>
+                      {sala.length > 9 ? sala.substr(0, 9) + "." : sala}
+                    </Text>
+                    <Text style={styles.itemList}>
+                      {new Date(item.DT_VISITA).toLocaleTimeString()}
+                    </Text>
                   </View>
                 );
               }}
