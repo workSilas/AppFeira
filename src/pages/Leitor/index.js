@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { CameraView, Camera } from 'expo-camera';
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Button, StyleSheet, Text, View, Image, TouchableOpacity, ImageBackground } from 'react-native';
+import Toast from "react-native-toast-message"
 
 export default function Leitor() {
 
@@ -31,7 +32,10 @@ export default function Leitor() {
       sala: salaSelecionada,
       andar: andarSelecionado
     })
-    alert(`QR-CODE scanneado com sucesso!`);
+    Toast.show({
+      text1: "Qrcode escaneado com sucesso !",
+      type: "success"
+    });
   }
 
   if (hasPermission === null) {
