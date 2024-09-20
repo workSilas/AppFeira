@@ -4,12 +4,9 @@ import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get('window');
 const listVW = width * 0.90; // 5vw
 const listVH = height * 0.55; // 5vh
-
 const fontSizeVW = width * 0.07; // 5vw
-
 const fontListSizeVW = width * 0.05; // 5vw
-
-const refresh = width * 0.05; // 5vw
+const refreshVW = width * 0.035; // 5vw
 
 
 const styles = StyleSheet.create({
@@ -58,7 +55,7 @@ const styles = StyleSheet.create({
     },
     refresh: {
         width: '25%',
-        height: 25,
+        height: '9%',
         alignSelf: 'flex-end',
         justifyContent: 'center',
         backgroundColor: 'orange',
@@ -69,8 +66,9 @@ const styles = StyleSheet.create({
     textRefresh: {
         color: '#fff',
         textAlign: 'center',
-        fontWeight: "400",
-        fontSize: refresh,
+        alignItems: center,
+        fontWeight: "500",
+        fontSize: refreshVW,
     },
     sectionRow: {
         flexDirection: 'row',
