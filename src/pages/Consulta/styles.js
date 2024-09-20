@@ -89,10 +89,11 @@ const styles = StyleSheet.create({
     },
     listView: {
         display: 'flex',
+        flexDirection: 'row',
         width: '90%',
         textAlign: 'center',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         marginTop: 20,
         borderRadius: 12,
         padding: 20,

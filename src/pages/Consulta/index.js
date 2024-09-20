@@ -29,24 +29,47 @@ export default function Consulta() {
 
   useEffect(() => {
     async function marcarVisita() {
-      await axios.post(
-        url,
-        { andar: andar, sala: sala, qrcode: qrCode },
-        { headers: { "x-access-token": token } }
-      );
-      Toast.show({
-        text1: "Visita registrada!",
-        type: "success"
-      });
+      try {
+
+        if (!qrCode)
+          return;
+
+        await axios.post(
+          url,
+          { andar: andar, sala: sala, qrcode: qrCode },
+          { headers: { "x-access-token": token } }
+        );
+        Toast.show({
+          text1: "Visita registrada!",
+          type: "success"
+        });
+        
+      }
+      catch (err) {
+        Toast.show({
+          text1: err.response.data.erro,
+          type: "error"
+        });
+      }
     }
     marcarVisita();
   }, []);
 
   async function listaConsulta() {
-    let resp = await axios.get(`${url}/${andar}/${sala}`, {
-      headers: { "x-access-token": token },
-    });
-    setConsulta(resp.data);
+    try {
+      
+      let resp = await axios.get(`${url}/${andar}/${sala}`, {
+        headers: { "x-access-token": token },
+      });
+      setConsulta(resp.data);
+      
+    }
+    catch (err) {
+      Toast.show({
+        text1: err.response.data.erro,
+        type: "error"
+      });
+    }
   }
 
   return (
@@ -89,8 +112,10 @@ export default function Consulta() {
               data={consulta.reverse()}
               renderItem={({ item }) => {
                 return (
-                  <View style={styles.listView}>
-                    <Text style={styles.itemList}>{item.DT_VISITA}</Text>
+                  <View style={styles.listView} key={item}>
+                    <Text style={styles.itemList}>{andar}</Text>
+                    <Text style={styles.itemList}>{sala.length > 9 ? sala.substr(0, 9)+'.' : sala}</Text>
+                    <Text style={styles.itemList}>{new Date(item.DT_VISITA).toLocaleTimeString()}</Text>
                   </View>
                 );
               }}
