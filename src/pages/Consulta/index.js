@@ -112,9 +112,7 @@ export default function Consulta() {
                   </View>
                 );
               }}
-              keyExtractor={(item) => {
-                item.id;
-              }}
+              keyExtractor={(item) => item.DT_VISITA}
             />
           </View>
         </ImageBackground>
