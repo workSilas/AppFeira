@@ -92,7 +92,7 @@ export default function Home() {
                   dropdownItemStyles={{
                     borderStyle: "solid",
                     borderColor: "#000",
-                    borderWidth: 0.5,
+                    borderWidth: 0.3,
                   }}
                   dropdownTextStyles={{ color: "#000", fontWeight: "300" }}
                   setSelected={(val) => setSelected(val)}
@@ -107,7 +107,7 @@ export default function Home() {
                   dropdownItemStyles={{
                     borderStyle: "solid",
                     borderColor: "#000",
-                    borderWidth: 0.5,
+                    borderWidth: 0.3,
                   }}
                   dropdownTextStyles={{ color: "#000", fontWeight: "300" }}
                   setSelected={(val) => setSalas(val)}

@@ -19,7 +19,6 @@ export default function Leitor() {
   const [scanned, setScanned] = useState(false);
   const { params } = useRoute();
   const { salaSelecionada, andarSelecionado } = params; // fazendo desestruturação para pegar apenas o parametro q enviei la na home. Percebe-se que o nome segue o mesmo.
-  console.log(salaSelecionada);
 
   useEffect(() => {
     const getCameraPermissions = async () => {
