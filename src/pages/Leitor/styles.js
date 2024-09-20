@@ -5,7 +5,7 @@ import { Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
 const backVH = height * 0.50; // 5vw
 const fontSizeVW = width * 0.08; // 5vh
-
+ 
 
 const styles = StyleSheet.create({
     container: {
