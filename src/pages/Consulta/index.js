@@ -19,9 +19,9 @@ export default function Consulta() {
   const { sala, qrCode, andar } = params; // fazendo desestruturação para pegar apenas o parametro q enviei la na home. Percebe-se que o nome segue o mesmo.
   const [consulta, setConsulta] = useState([]);
 
-  const url = "https://www.feiradeprofissoes-insf.com.br/api/visita";
+  const url = "";
   const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjoiZmVpcmEiLCJzZW5oYSI6ImZyMyEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MjY3MDMyNDB9.yFTyVjiuoseejMKTj4pTLW0vGG0cvqX_vvUZ9NQZMyc";
+    "";
 
   useEffect(() => {
     async function marcarVisita() {
